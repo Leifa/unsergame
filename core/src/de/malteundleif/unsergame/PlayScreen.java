@@ -161,6 +161,9 @@ public class PlayScreen extends ScreenAdapter {
             if (life < LIFE_MAX) {
                 life++;
                 game.soundLifePlus.play();
+            } else {
+                score += 10;
+                game.soundLifePlus2.play();
             }
             break;
 
@@ -217,8 +220,6 @@ public class PlayScreen extends ScreenAdapter {
                 game.sr.setColor(1, 1, 1, 1);
                 game.sr.circle(fallingObjectList.get(i).x, fallingObjectList.get(i).y, fallingObjectList.get(i).radius);
             }
-
-
         }
         game.sr.end();
         
@@ -247,7 +248,6 @@ public class PlayScreen extends ScreenAdapter {
                 case PowerUp.BOMB:
                     game.batch.draw(game.imgBomb, fallingObjectList.get(i).x - fallingObjectList.get(i).radius, fallingObjectList.get(i).y - fallingObjectList.get(i).radius, 40, 40);
                 }
-
             }
         }
         if (bombTimer > 0) {

@@ -50,13 +50,13 @@ public class Dodger {
 		}
 		
 		x += speedx;
-		if (x >= 1200-(width+UnserGame.BORDER)) {
+		if (x >= 1200-(width+PlayScreen.BORDER)) {
 			speedx = 0;
-			x = 1200-width-UnserGame.BORDER;
+			x = 1200-width-PlayScreen.BORDER;
 		}
-		if (x <= UnserGame.BORDER) {
+		if (x <= PlayScreen.BORDER) {
 			speedx = 0;
-			x = UnserGame.BORDER;
+			x = PlayScreen.BORDER;
 		}
 	}
 	
