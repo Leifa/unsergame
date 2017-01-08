@@ -88,7 +88,7 @@ public class PlayScreen extends ScreenAdapter {
     }
     
     public void createDeathBall() {
-        DeathBall ball = new DeathBall(framecounter);
+        DeathBall ball = new DeathBall(framecounter, game.random.nextInt(6));
         fallingObjectList.add(ball);
     }
 
@@ -215,12 +215,6 @@ public class PlayScreen extends ScreenAdapter {
         game.sr.rect(BORDER,  BORDER,  1200-2*BORDER, 800-2*BORDER);
         game.sr.setColor(1, 1, 1, 1);
         game.sr.rect(dodger.x, dodger.y, dodger.width, dodger.height);
-        for (int i = 0; i < fallingObjectList.size(); i++) {
-            if (fallingObjectList.get(i) instanceof DeathBall) {
-                game.sr.setColor(1, 1, 1, 1);
-                game.sr.circle(fallingObjectList.get(i).x, fallingObjectList.get(i).y, fallingObjectList.get(i).radius);
-            }
-        }
         game.sr.end();
         
         game.batch.begin();
@@ -248,6 +242,9 @@ public class PlayScreen extends ScreenAdapter {
                 case PowerUp.BOMB:
                     game.batch.draw(game.imgBomb, fallingObjectList.get(i).x - fallingObjectList.get(i).radius, fallingObjectList.get(i).y - fallingObjectList.get(i).radius, 40, 40);
                 }
+            } else if (fallingObjectList.get(i) instanceof DeathBall) {
+                DeathBall db = ((DeathBall) fallingObjectList.get(i));
+                game.batch.draw(game.imgSkulls[db.scullGraphic], db.x-db.radius, db.y-db.radius, 2*db.radius, 2*db.radius);
             }
         }
         if (bombTimer > 0) {
