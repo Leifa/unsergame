@@ -174,7 +174,10 @@ public class PlayScreen extends ScreenAdapter {
             break;
 
         case PowerUp.SMALL:
-            if (dodger.width > 40) dodger.width -= 10;
+            if (dodger.width > 40) {
+                dodger.width -= 10;
+                dodger.x += 5;
+            }
             game.soundSmall.play();
             break;
 
@@ -198,7 +201,7 @@ public class PlayScreen extends ScreenAdapter {
         for (int i = 0; i < fallingObjectList.size(); i++) {
             if (fallingObjectList.get(i) instanceof DeathBall) {
                 fallingObjectList.remove(i);
-                score += 10;
+                score += 3;
                 i--;
             }
         }
