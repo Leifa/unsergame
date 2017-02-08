@@ -18,7 +18,7 @@ public class Dodger {
 	public Dodger() {
 		x = 540;
 		y = 100;
-		width = 120;
+		width = 320;
 		height = 15;
 		speedx = 0;
 		setAcceleration(0.25f);
