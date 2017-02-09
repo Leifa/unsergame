@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
+import javafx.scene.text.Text;
+
 public class PlayScreen extends ScreenAdapter {
     
     public static final int BORDER = 20;
@@ -107,6 +109,16 @@ public class PlayScreen extends ScreenAdapter {
             framecolor = colors[level];
         }
     }
+    
+    public void leveldown() {
+    	level--;
+    	chance -= 0.015;
+    	dodger.setAcceleration(dodger.acc - 0.2f);
+    	dodger.setMaxSpeed(dodger.speedxmax - 2);
+    	if (level < colors.length) {
+            framecolor = colors[level];
+        }
+    }
 
     public void updatePositions() {
         dodger.update();
@@ -182,11 +194,17 @@ public class PlayScreen extends ScreenAdapter {
             break;
 
         case PowerUp.SLOWMO:
-            slowmoTimer = 390;
+            if (slowmoTimer>0) framecounter -= slowmoTimer;
+            else { framecounter -= 390;}
+        	slowmoTimer = 390;
+            if (framecounter<0) framecounter=0;
+            float slowmohelper=(framecounter-LEVEL_DURATION);
+            if (slowmohelper<0) slowmohelper *= (-1);
+            if (slowmohelper/LEVEL_DURATION < level) leveldown();
             game.soundSlowmo.stop();
             game.soundSlowmo.play();
             break;
-            
+           
         case PowerUp.BOMB:
             bombActivated = true;
             break;
@@ -259,6 +277,7 @@ public class PlayScreen extends ScreenAdapter {
             if (bombTimer > 00 && bombTimer <= 60) game.batch.draw(game.imgSmoke2, 550, 400, 130, 130);
         }
         game.font.draw(game.batch, "Score: "+score, 35, 770);
+        game.font.draw(game.batch, "frame: "+framecounter, 550, 80);
         game.batch.end();
     }
 
