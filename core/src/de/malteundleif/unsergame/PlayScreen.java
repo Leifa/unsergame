@@ -8,8 +8,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
-import javafx.scene.text.Text;
-
 public class PlayScreen extends ScreenAdapter {
     
     public static final int BORDER = 20;
@@ -194,13 +192,10 @@ public class PlayScreen extends ScreenAdapter {
             break;
 
         case PowerUp.SLOWMO:
-            if (slowmoTimer>0) framecounter -= slowmoTimer;
-            else { framecounter -= 390;}
+        	if (framecounter%LEVEL_DURATION<390) leveldown();
+            if (slowmoTimer>0) framecounter += slowmoTimer;
+            framecounter -= 390;
         	slowmoTimer = 390;
-            if (framecounter<0) framecounter=0;
-            float slowmohelper=(framecounter-LEVEL_DURATION);
-            if (slowmohelper<0) slowmohelper *= (-1);
-            if (slowmohelper/LEVEL_DURATION < level) leveldown();
             game.soundSlowmo.stop();
             game.soundSlowmo.play();
             break;
