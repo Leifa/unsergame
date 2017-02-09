@@ -192,7 +192,7 @@ public class PlayScreen extends ScreenAdapter {
             break;
 
         case PowerUp.SLOWMO:
-        	if (framecounter%LEVEL_DURATION<390) leveldown();
+        	if (framecounter%LEVEL_DURATION<390&&level>0) leveldown();
             if (slowmoTimer>0) framecounter += slowmoTimer;
             framecounter -= 390;
         	slowmoTimer = 390;
