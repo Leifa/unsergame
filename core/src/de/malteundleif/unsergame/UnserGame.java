@@ -52,7 +52,7 @@ public class UnserGame extends Game {
 		highScoreList = new HighScoreList();
 		highScoreList.load();
 		
-		this.setScreen(new PlayScreen(this));
+		this.setScreen(new MenuScreen(this));
 	}
 
 	@Override

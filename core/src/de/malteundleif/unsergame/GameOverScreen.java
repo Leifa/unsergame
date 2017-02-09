@@ -80,6 +80,7 @@ public class GameOverScreen extends ScreenAdapter {
             }
         } else {
             if (Gdx.input.isKeyPressed(Keys.SPACE)) game.setScreen(new PlayScreen(game));
+            else if (Gdx.input.isKeyJustPressed(Keys.ENTER)) game.setScreen(new MenuScreen(game));
         }
         
         Gdx.gl.glClearColor(0.06f, 0.31f, 0.55f, 1);
@@ -102,6 +103,7 @@ public class GameOverScreen extends ScreenAdapter {
             }
         }
         game.font.draw(game.batch,  "To restart press space", text3X, 100);
+        game.font.draw(game.batch,  "For menu press enter", text3X, 60);
         game.batch.end();
     }
     
