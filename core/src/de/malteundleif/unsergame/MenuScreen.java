@@ -25,58 +25,20 @@ public class MenuScreen extends ScreenAdapter {
 
 		if (Gdx.input.isKeyJustPressed(Keys.DOWN)) {
 			m++;
-			if (m>4) m=0;
+			if (m>2) m=0;
 		}
 		else if (Gdx.input.isKeyJustPressed(Keys.UP)) {
 			m--;
-			if (m<0) m=4;
+			if (m<0) m=2;
 		}
 
+		if (m==0) game.fontWhite.draw(game.batch,  "Start Game", 520, 500);
+		else game.font.draw(game.batch,  "Start Game", 520, 500);
+		if (m==1) game.fontWhite.draw(game.batch,  "Highscores", 520, 400);
+		else game.font.draw(game.batch,  "Highscores", 520, 400);
+		if (m==2) game.fontWhite.draw(game.batch,  "Quit", 570, 300);
+		else game.font.draw(game.batch,  "Quit", 570, 300);
 
-		switch (m) {
-		case 0:
-			game.fontWhite.draw(game.batch,  "Start Game", 520, 600);
-			game.font.draw(game.batch,  "Instructions", 515, 500);
-			game.font.draw(game.batch,  "Highscores", 520, 400);
-			game.font.draw(game.batch,  "Options", 545, 300);
-			game.font.draw(game.batch,  "Quit", 570, 200);
-			break;
-
-		case 1:
-			game.font.draw(game.batch,  "Start Game", 520, 600);
-			game.fontWhite.draw(game.batch,  "Instructions", 515, 500);
-			game.font.draw(game.batch,  "Highscores", 520, 400);
-			game.font.draw(game.batch,  "Options", 545, 300);
-			game.font.draw(game.batch,  "Quit", 570, 200);
-			break;
-
-		case 2:
-			game.font.draw(game.batch,  "Start Game", 520, 600);
-			game.font.draw(game.batch,  "Instructions", 515, 500);
-			game.fontWhite.draw(game.batch,  "Highscores", 520, 400);
-			game.font.draw(game.batch,  "Options", 545, 300);
-			game.font.draw(game.batch,  "Quit", 570, 200);
-			break;
-
-		case 3:
-			game.font.draw(game.batch,  "Start Game", 520, 600);
-			game.font.draw(game.batch,  "Instructions", 515, 500);
-			game.font.draw(game.batch,  "Highscores", 520, 400);
-			game.fontWhite.draw(game.batch,  "Options", 545, 300);
-			game.font.draw(game.batch,  "Quit", 570, 200);
-			break;
-
-		case 4:
-			game.font.draw(game.batch,  "Start Game", 520, 600);
-			game.font.draw(game.batch,  "Instructions", 515, 500);
-			game.font.draw(game.batch,  "Highscores", 520, 400);
-			game.font.draw(game.batch,  "Options", 545, 300);
-			game.fontWhite.draw(game.batch,  "Quit", 570, 200);
-			break;
-
-		default:
-			break;
-		}
         game.batch.end();
 
 
@@ -87,16 +49,10 @@ public class MenuScreen extends ScreenAdapter {
 				break;
 
 			case 1:
-				break;
-
-			case 2:
 				game.setScreen(new HighScoreScreen(game));
 				break;
 
-			case 3:
-				break;
-
-			case 4:
+			case 2:
 				System.exit(0);
 				break;
 

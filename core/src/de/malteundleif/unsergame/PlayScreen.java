@@ -272,7 +272,6 @@ public class PlayScreen extends ScreenAdapter {
             if (bombTimer > 00 && bombTimer <= 60) game.batch.draw(game.imgSmoke2, 550, 400, 130, 130);
         }
         game.font.draw(game.batch, "Score: "+score, 35, 770);
-        game.font.draw(game.batch, "frame: "+framecounter, 550, 80);
         game.batch.end();
     }
 
