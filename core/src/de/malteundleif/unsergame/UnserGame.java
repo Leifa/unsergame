@@ -5,15 +5,22 @@ import java.util.Random;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class UnserGame extends Game {
+    
+    public static final int WIDTH = 1200;
+    public static final int HEIGHT = 800;
 
 	SpriteBatch batch;
 	ShapeRenderer sr;
@@ -23,7 +30,10 @@ public class UnserGame extends Game {
 	BitmapFont font, fontWhite, bigFont;
     Random random;
     HighScoreList highScoreList;
-
+    
+    Viewport viewport;
+    Camera camera;
+    
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -52,11 +62,16 @@ public class UnserGame extends Game {
 		highScoreList = new HighScoreList();
 		highScoreList.load();
 		
+		camera = new OrthographicCamera(WIDTH, HEIGHT);
+		camera.position.set(WIDTH / 2, HEIGHT / 2, 0);
+		viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
+		
 		this.setScreen(new MenuScreen(this));
 	}
 
 	@Override
 	public void render () {
+	    batch.setProjectionMatrix(camera.combined);
 	    super.render();
 	}
 	
@@ -81,5 +96,10 @@ public class UnserGame extends Game {
 		
 		imgLifePlus.dispose();
 		imgHeart.dispose();
+	}
+	
+	@Override
+	public void resize(int width, int height) {
+	    viewport.update(width, height);
 	}
 }

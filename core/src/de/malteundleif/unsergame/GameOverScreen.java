@@ -16,6 +16,8 @@ public class GameOverScreen extends ScreenAdapter {
     String name;
     
     float text1X, text2X, text3X;
+    float leftBorder;
+    float rightBorder;
     float[] scoresX;
     
     boolean flash;
@@ -97,8 +99,8 @@ public class GameOverScreen extends ScreenAdapter {
         }        
         for (int i = 0; i < HighScoreList.NUMBER_OF_SCORES; i++) {
             if (game.highScoreList.scores[i] >= 0) {
-                game.font.draw(game.batch, (i+1) + ".", 400, 520 - 30*i);
-                game.font.draw(game.batch, game.highScoreList.names[i], 450, 520 - 30*i);
+                game.font.draw(game.batch, (i+1) + ".", leftBorder, 520 - 30*i);
+                game.font.draw(game.batch, game.highScoreList.names[i], leftBorder+50, 520 - 30*i);
                 game.font.draw(game.batch, "" + game.highScoreList.scores[i], scoresX[i], 520 - 30*i);
             }
         }
@@ -108,17 +110,19 @@ public class GameOverScreen extends ScreenAdapter {
     }
     
     private void calculateCoordinates() {
+        leftBorder = (UnserGame.WIDTH - 400) / 2;
+        rightBorder = UnserGame.WIDTH - leftBorder;
         GlyphLayout layout = new GlyphLayout();
         layout.setText(game.bigFont, "Game Over!");
-        text1X = (1200 - layout.width)/2;
+        text1X = (UnserGame.WIDTH - layout.width)/2;
         layout.setText(game.font, "Your score is "+score);
-        text2X = (1200 - layout.width)/2;
+        text2X = (UnserGame.WIDTH - layout.width)/2;
         layout.setText(game.font, "To restart press space");
-        text3X = (1200 - layout.width)/2;
+        text3X = (UnserGame.WIDTH - layout.width)/2;
         scoresX = new float[HighScoreList.NUMBER_OF_SCORES];
         for (int i = 0; i < HighScoreList.NUMBER_OF_SCORES; i++) {
             layout.setText(game.font, "" + game.highScoreList.scores[i]);
-            scoresX[i] = 800 - layout.width;
+            scoresX[i] = rightBorder - layout.width;
         }
     }
 

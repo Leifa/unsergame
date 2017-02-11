@@ -16,7 +16,7 @@ public class PowerUp extends FallingObject {
 		super();
 		this.type = type;
 		Random r = new Random();
-		x = 1200*r.nextFloat();
+		x = UnserGame.WIDTH*r.nextFloat();
 		radius = 20;
 		speedy = (-5f+2f*r.nextFloat());
 		speedx = 0;

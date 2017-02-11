@@ -12,9 +12,9 @@ public class FallingObject {
 
 
 	public FallingObject () {
-		y = 800;
+		y = UnserGame.HEIGHT;
 		Random r = new Random();
-		x = 1200*r.nextFloat();
+		x = UnserGame.WIDTH*r.nextFloat();
 	}
 
 

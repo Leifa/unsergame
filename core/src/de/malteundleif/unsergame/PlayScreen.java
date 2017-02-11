@@ -228,7 +228,7 @@ public class PlayScreen extends ScreenAdapter {
 
         game.sr.begin(ShapeType.Filled);
         game.sr.setColor(0.11f, 0.29f, 0.45f, 1);
-        game.sr.rect(BORDER,  BORDER,  1200-2*BORDER, 800-2*BORDER);
+        game.sr.rect(BORDER,  BORDER,  UnserGame.WIDTH-2*BORDER, UnserGame.HEIGHT-2*BORDER);
         game.sr.setColor(1, 1, 1, 1);
         game.sr.rect(dodger.x, dodger.y, dodger.width, dodger.height);
         game.sr.end();

@@ -16,10 +16,10 @@ public class Dodger {
 	float dec;
 	
 	public Dodger() {
-		x = 540;
-		y = 100;
 		width = 120;
 		height = 15;
+        x = (UnserGame.WIDTH - width) / 2;
+        y = 100;
 		speedx = 0;
 		setAcceleration(0.25f);
 		setMaxSpeed(12);
@@ -50,9 +50,9 @@ public class Dodger {
 		}
 		
 		x += speedx;
-		if (x >= 1200-(width+PlayScreen.BORDER)) {
+		if (x >= UnserGame.WIDTH-(width+PlayScreen.BORDER)) {
 			speedx = 0;
-			x = 1200-width-PlayScreen.BORDER;
+			x = UnserGame.WIDTH-width-PlayScreen.BORDER;
 		}
 		if (x <= PlayScreen.BORDER) {
 			speedx = 0;
