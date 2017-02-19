@@ -229,11 +229,13 @@ public class PlayScreen extends ScreenAdapter {
         game.sr.begin(ShapeType.Filled);
         game.sr.setColor(0.11f, 0.29f, 0.45f, 1);
         game.sr.rect(BORDER,  BORDER,  UnserGame.WIDTH-2*BORDER, UnserGame.HEIGHT-2*BORDER);
-        game.sr.setColor(1, 1, 1, 1);
-        game.sr.rect(dodger.x, dodger.y, dodger.width, dodger.height);
         game.sr.end();
         
         game.batch.begin();
+        game.batch.draw(game.imgDodgerLeft, dodger.x, dodger.y, 10, dodger.height);
+        game.batch.draw(game.imgDodgerMiddle, dodger.x+10, dodger.y, dodger.width-20, dodger.height);
+        game.batch.draw(game.imgDodgerRight, dodger.x+dodger.width-10, dodger.y, 10, dodger.height);
+        
         for (int i=0; i<LIFE_MAX; i++) {
             game.batch.draw(game.imgHeartEmpty, 1145-i*45, 750, 30, 30);
         }

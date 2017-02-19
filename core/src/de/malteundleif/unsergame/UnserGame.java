@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -24,8 +25,9 @@ public class UnserGame extends Game {
 
 	SpriteBatch batch;
 	ShapeRenderer sr;
-    Texture imgHeart, imgHeartEmpty, imgLifePlus, imgSmall, imgAccBoost, imgSlowmo, imgBomb, imgSmoke1, imgSmoke2;
+    Texture imgHeart, imgHeartEmpty, imgLifePlus, imgSmall, imgAccBoost, imgSlowmo, imgBomb, imgSmoke1, imgSmoke2, imgDodger;
     Texture[] imgSkulls;
+    TextureRegion imgDodgerLeft, imgDodgerMiddle, imgDodgerRight;
 	Sound soundLifePlus, soundLifeMinus, soundSmall, soundAccBoost, soundSlowmo, soundLifePlus2;
 	BitmapFont font, fontWhite, bigFont;
     Random random;
@@ -48,6 +50,10 @@ public class UnserGame extends Game {
 		imgSmoke1 = new Texture("smoke1.png");
 		imgSmoke2 = new Texture("smoke2.png");
 		imgSkulls = new Texture[6];
+		imgDodger = new Texture("dodger.png");
+		imgDodgerLeft = new TextureRegion(imgDodger, 0, 0, 10, 15);
+		imgDodgerMiddle = new TextureRegion(imgDodger, 10, 0, 10, 15);
+		imgDodgerRight = new TextureRegion(imgDodger, 30, 0, 10, 15);
 		for (int i = 0; i < 6; i++) imgSkulls[i] = new Texture("skull" + (i+1) + ".png");
 		soundLifePlus = Gdx.audio.newSound(Gdx.files.internal("Life Plus.mp3"));
 		soundLifePlus2 = Gdx.audio.newSound(Gdx.files.internal("lifeplus2.mp3"));
