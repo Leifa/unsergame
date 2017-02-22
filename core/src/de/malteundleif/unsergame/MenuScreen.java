@@ -67,7 +67,7 @@ public class MenuScreen extends ScreenAdapter {
 				break;
 				
 			case 3:
-				System.exit(0);
+				Gdx.app.exit();
 				break;
 
 			default:

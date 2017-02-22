@@ -37,7 +37,7 @@ public class HighScoreScreen extends ScreenAdapter {
 		}
         game.font.draw(game.batch,  "For menu press enter", text2X, 60);
 		game.batch.end();
-		if (Gdx.input.isKeyJustPressed(Keys.ENTER)) game.setScreen(new MenuScreen(game));
+		if (Gdx.input.isKeyJustPressed(Keys.ENTER) || Gdx.input.isKeyJustPressed(Keys.ESCAPE)) game.setScreen(new MenuScreen(game));
 	}
 	
     private void calculateCoordinates() {

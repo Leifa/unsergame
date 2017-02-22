@@ -23,7 +23,7 @@ public class HighScoreList {
     }
     
     public void load() {
-        Preferences prefs = Gdx.app.getPreferences("My Preferences");
+        Preferences prefs = Gdx.app.getPreferences("dodger");
         for (int i = 0; i < NUMBER_OF_SCORES; i++) {
             scores[i] = prefs.getInteger("score" + i, -1);
             names[i] = prefs.getString("name" + i, "");
@@ -31,7 +31,7 @@ public class HighScoreList {
     }
     
     public void save() {
-        Preferences prefs = Gdx.app.getPreferences("My Preferences");
+        Preferences prefs = Gdx.app.getPreferences("dodger");
         for (int i = 0; i < NUMBER_OF_SCORES; i++) {
             prefs.putString("name" + i, names[i]);
             prefs.putInteger("score" + i, scores[i]);
@@ -60,9 +60,11 @@ public class HighScoreList {
     }
     
     public void resetHighscoreList() {
+        emptyList();
+        Preferences prefs = Gdx.app.getPreferences("dodger");
     	for (int i = 0; i < NUMBER_OF_SCORES; i++) {
-            scores[i] = 0000;
-            names[i] = "";
+            prefs.remove("score" + i);
+            prefs.remove("name" + i);
         }
     }
 
