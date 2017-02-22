@@ -59,6 +59,12 @@ public class HighScoreList {
         names[place] = name;
     }
     
+    public void resetHighscoreList() {
+    	for (int i = 0; i < NUMBER_OF_SCORES; i++) {
+            scores[i] = 0000;
+            names[i] = "";
+        }
+    }
 
-    
+
 }
